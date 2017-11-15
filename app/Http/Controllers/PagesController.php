@@ -10,6 +10,6 @@ class PagesController extends Controller
 {
     public function index()
     {
-    	return redirect()->route('articles.index');
+    	return redirect()->route('article.index');
     }
 }

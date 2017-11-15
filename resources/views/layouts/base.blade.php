@@ -19,23 +19,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('articles.index') }}">Simplte blog</a>
+                <a class="navbar-brand" href="{{ route('article.index') }}">Simplte blog</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ route('articles.create') }}">New Article <span class="sr-only">(current)</span></a></li>
+                    <li><a href="{{ route('article.create') }}">New Article <span class="sr-only">(current)</span></a></li>
                 </ul>
-                <form class="navbar-form navbar-right" role="search">
+                
+                <form class="navbar-form navbar-right" action="{{ route('article.search') }}" method="get">
+                    <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" placeholder="Search" name="keyword">
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn btn-default">Search</button>
                 </form>
             </div>
         </div>
     </nav>
     
-    <div class="container-fulid">
+    <div class="container">
         @yield('content')
     </div>
 

@@ -13,7 +13,8 @@ class ArticlesController extends Controller
 {
     public function index()
     {
-    	$articles = Article::all();
+        $articles = Article::Simplepaginate(5);
+    	// $articles = Article::paginate(5);
     	return view('articles/home', compact('articles'));
     }
 
@@ -61,5 +62,20 @@ class ArticlesController extends Controller
         // 
         // return redirect()->route('articles.index')
         return redirect('/');
+    }
+
+    public function destroy($id)
+    {
+        $article = Article::find($id);
+        $article->delete();
+
+        return redirect('/');
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->get('keyword');
+        $articles = Article::where('title', 'LIKE', "%".$keyword."%")->orWhere('content', 'LIKE', "%".$keyword."%")->get();
+        return view('articles/search', compact('articles'), compact('keyword'));
     }
 }

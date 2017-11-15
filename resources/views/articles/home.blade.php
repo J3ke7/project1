@@ -8,9 +8,16 @@
     	<div class="col-md-8 col-md-offset-2">
     		<h1>{{ $a->title }}</h1>
     		<p class="lead">{{ $a->content }}</p>
-    		<p><a href="{{ route('articles.show', $a->id) }}">Read more</a></p>
+    		<p><a href="{{ route('article.show', $a->id) }}">Read more</a></p>
     	</div>
     </div>
     @endforeach
+
+    <div class="row">
+    	<div class="col-md-8 col-md-offset-2 text-center">
+    		{{ $articles->render() }}
+    		{{ $articles->nextPageUrl() }}
+    	</div>
+    </div>
 @endsection
 
