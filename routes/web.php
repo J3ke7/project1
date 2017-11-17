@@ -1,5 +1,23 @@
 <?php
-Route::get('/', 'PagesController@index' );
+
+Route::get('/', 'PagesController@index');
+
+Route::get('/dang-nhap', [
+	'as'   => 'page.login',
+	'uses' => 'PagesController@login'
+]);
+Route::get('/dang-ky', [
+	'as'   => 'page.register',
+	'uses' => 'PagesController@register'
+]);
+Route::get('/quen-mat-khau', [
+	'as'   => 'page.forgot-password',
+	'uses' => 'PagesController@forgotPassword'
+]);
+Route::get('/dat-lai-mat-khau', [
+	'as'   => 'page.reset-password',
+	'uses' => 'PagesController@resetPassword'
+]);
 Route::get('/bai-viet', [
 	'as'   => 'article.index',
 	'uses' => 'ArticlesController@index'
@@ -33,3 +51,15 @@ Route::post('/bai-viet/{id}', [
 	'uses' => 'ArticlesController@destroy'
 ]);
 
+Route::get('/hinh-anh', [
+	'as'   => 'image.index',
+	'uses' => 'FileController@index'
+]);
+Route::get('/tai-anh', [
+	'as'   => 'image.upload',
+	'uses' => 'FileController@upload'
+]);
+Route::post('/tai-anh', [
+	'as'   => 'image.handle-upload',
+	'uses' => 'FileController@handleUpload'
+]);
